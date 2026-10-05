@@ -132,7 +132,6 @@ figure figcaption {
   border-collapse: separate;
   border-spacing: 0 5px;
   margin-top: 10px;
-  
 }
 
 #tecnology th {
@@ -147,6 +146,9 @@ tbody td {
   padding: 8px;
   text-align: center;
   font-size: 14px;
+}
+#tecnology td {
+  border: 2px solid rgb(13, 29, 39);
 }
 
 /* Conteúdo Principal (Direita) */
@@ -219,7 +221,6 @@ article p {
 .my_profile {
   flex: 0 0 280px;
   background-color: rgb(23, 49, 66);
-
   border-radius: 18px;
   padding: 25px 15px;
   text-align: center;
@@ -257,6 +258,10 @@ article p {
 }
 
 /* Menu de Âncoras Internas */
+
+.my_nav_academic {
+  justify-content: center;
+}
 .my_nav_academic ul {
   list-style: none;
   padding: 0;
@@ -317,23 +322,22 @@ article p {
   border-collapse: collapse;
   margin-top: 15px;
 }
-
+#tecnology_curriculo td {
+  border: 2px solid rgb(23, 49, 66);
+}
 #tecnology_curriculo th,
 #tecnology_curriculo td {
   padding: 10px;
   text-align: center;
-  
 }
 
 #tecnology_curriculo tbody {
   background-color: rgb(105, 114, 124);
-  
 }
 
 #contact ul li a {
   text-decoration: none;
   color: aqua;
-  
 }
 
 /* Container do Formulário */
@@ -343,48 +347,50 @@ article p {
   align-items: center;
   padding: 40px 20px;
   margin: auto;
+  min-width: 100%;
 }
 
 form {
   background-color: rgb(23, 49, 66);
   color: aliceblue;
   padding: 35px;
-
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  max-width: 700px;
+  width: 100%;
 }
 
 fieldset {
   border: solid black 2px;
   border-radius: 14px;
-  padding: 50px;
+  padding: 30px;
 }
 
 input {
-  width: 570px;
+  width: 100%;
 }
 
 textarea {
-  height: 300px;
+  height: 150px;
+  width: 100%;
 }
 
 .genre {
   display: flex;
   justify-content: center;
-  gap: 4px;
+  gap: 15px;
 }
 
 .genre input {
-  width: 100%;
+  width: auto;
   cursor: pointer;
 }
 
 .genre label {
-  width: 100px;
+  width: auto;
   padding: 4px;
   text-align: center;
 }
-
 
 form h1 {
   text-align: center;
@@ -455,32 +461,40 @@ form h1 {
 
 .form_buttons button[type="reset"] {
   background-color: rgb(105, 114, 124);
-  color: aliceblue;
 }
 
 .form_buttons button[type="reset"]:hover {
   background-color: rgb(130, 140, 150);
 }
-/* ---------------------------------------------------------------- */
-/*Multimidia abaixo*/
 
-.mediaBox {
+/* Multimidia abaixo - USANDO DISPLAY GRID */
+
+.container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: auto;
+  min-height: 100vh;
+  width: 100%;
+}
+
+main.mediaBox {
+  flex: 1; /* Faz o conteúdo principal ocupar todo o espaço vago */
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 30px 20px;
 }
 
 .midia_title {
   color: aliceblue;
   text-align: center;
 }
+
 .contentMedia {
   display: grid;
+  /* Cria colunas responsivas: mínimo de 300px e máximo de 1fr */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 25px;
-
-  width: 500px;
-
+  width: 100%;
   margin: 30px 0;
 }
 
@@ -495,6 +509,8 @@ form h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%; /* Ocupa a coluna do grid por inteiro */
+  box-sizing: border-box;
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
@@ -519,20 +535,18 @@ form h1 {
 
 /* ELEMENTOS DE MÍDIA E RESPONSIVIDADE DE VÍDEO */
 
-iframe {
-  aspect-ratio: 16 / 9;
+iframe,
+video {
+  width: 100%;
+  max-width: 100%;
   height: auto;
+  aspect-ratio: 16 / 9;
   border-radius: 8px;
   border: none;
 }
 
-video {
-  height: auto;
-  border-radius: 8px;
-  background-color: #000;
-}
-
 audio {
+  width: 100%;
   margin-top: 10px;
 }
 
@@ -552,61 +566,71 @@ audio {
   text-decoration: underline;
 }
 
-/*Gráfico abaixo*/
+/* Gráfico abaixo - USANDO DISPLAY GRID */
 
 .graphicContent {
-  margin: 33px 70px 50px 70px;
-  padding: 0.5rem 1rem 4.8rem 1rem;
+  margin: 30px auto;
+  padding: 20px 15px; /* Reduz o padding lateral para mobile */
   background-color: rgb(23, 49, 66);
-
   border-radius: 30px;
+  max-width: 1100px;
+  width: 100%;
+  box-sizing: border-box;
 }
+
 .graphic {
   color: aliceblue;
-  font-size: 3.5rem;
-}
-.container_grafic {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  max-width: 1000px;
-
-  padding: 3rem;
-  margin: 0 auto;
-
-  background-color: rgb(15, 25, 34);
-
-  border-radius: 50px;
-}
-
-.graphic {
+  font-size: Clamp(1.8rem, 4vw, 2.5rem); /* Fonte fluida que reduz no mobile */
   text-align: center;
+  margin-bottom: 20px;
 }
 
+/* Grid de Cards */
+.container_grafic {
+  display: grid;
+  /* Cria no máximo 3 colunas e quebra a linha dinamicamente em telas menores */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 20px;
+  justify-items: center;
+  max-width: 1000px;
+  padding: 1.5rem;
+  margin: 0 auto;
+  background-color: rgb(15, 25, 34);
+  border-radius: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Card Individual */
 .card {
   background-color: #ffffff;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 280px;
+  width: 100%;
+  max-width: 320px; /* Limita a largura do card em telas grandes */
   text-align: center;
+  box-sizing: border-box;
 }
 
 .card h2 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-bottom: 15px;
   color: #34495e;
 }
 
-/* SVG Estilização Básica */
-svg {
+/* Elementos Gráficos Responsivos */
+svg,
+canvas {
   background-color: #fafafa;
   border: 1px solid #e0e0e0;
   border-radius: 4px;
+  width: 100% !important; /* Força o gráfico a adaptar à largura do card */
+  height: auto !important; /* Mantém a proporção */
+  max-width: 100%;
 }
 
-/* Animação suave nos elementos do SVG */
+/* Animações e Estilos de SVG */
 rect,
 circle,
 path {
@@ -617,16 +641,17 @@ rect:hover {
   fill: #2980b9;
 }
 
-/* Texto dentro dos SVG */
 text {
-  font-size: 12px;
+  font-size: 11px;
   font-family: sans-serif;
 }
 
-#meuCanvas{
-border: 1px solid #ccc; 
-background-color: #f9f9f9;
+#meuCanvas {
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
 }
+
+
 /* Rodapé */
 footer {
   background-color: rgb(23, 49, 66);
@@ -634,4 +659,110 @@ footer {
   text-align: center;
   padding: 15px;
   margin-top: auto;
+}
+
+/* REGRAS BÁSICAS DE RESPONSIVIDADE PARA CELULAR */
+
+@media (max-width: 984px) {
+  main {
+    max-width: 980px;
+  }
+
+  @media (max-width: 850px) {
+    header {
+      flex-direction: column;
+      padding: 15px 20px;
+      gap: 15px;
+    }
+
+    nav {
+      justify-content: center;
+      width: 100%;
+    }
+
+    nav a {
+      flex: 1 1 120px;
+    }
+  }
+
+  /* Ajustes Gerais para Telas Menores (Tablets e Smartphones) */
+  @media (max-width: 768px) {
+    /* Layout principal e Currículo */
+    .mini_container_home {
+      margin: 15px 10px;
+    }
+
+    .about_my_curriculo {
+      flex-direction: column;
+      padding: 0 10px;
+    }
+
+    .my_profile {
+      position: static;
+      width: 100%;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .my_nav_academic ul {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .my_nav_academic a {
+      text-align: center;
+    }
+
+    /* Formulário */
+    .form_box {
+      padding: 20px 10px;
+    }
+
+    form {
+      padding: 20px 15px;
+    }
+
+    fieldset {
+      padding: 15px;
+    }
+
+    .form_buttons {
+      flex-direction: column;
+    }
+
+    /* Gráficos em Mobile */
+    .graphic {
+      font-size: 1.8rem;
+    }
+
+    .graphicContent {
+      padding: 15px 10px;
+      border-radius: 15px;
+    }
+
+    .container_grafic {
+      padding: 1rem;
+      grid-template-columns: 1fr; /* Força 1 coluna em celulares */
+      border-radius: 15px;
+    }
+
+    .card {
+      max-width: 100%;
+    }
+  }
+
+  /* Ajustes Finos para Smartphones Pequenos */
+  @media (max-width: 480px) {
+    header h1 {
+      width: 100%;
+    }
+
+    nav a {
+      font-size: 0.9rem;
+      padding: 8px 0;
+    }
+  }
 }
