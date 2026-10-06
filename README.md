@@ -35,7 +35,7 @@
 
    # Autor
 
-     Filipe Robert Soares
+   - Filipe Robert Soares
      
    - link do projeto: https://robertfill.github.io/Portifolio_Brazcubas/
 
