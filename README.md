@@ -33,5 +33,5 @@
 
    </div>
 
-   - link do projeto: <a href "https://robertfill.github.io/Portifolio_Brazcubas/">
+   - link do projeto: https://robertfill.github.io/Portifolio_Brazcubas/
 
