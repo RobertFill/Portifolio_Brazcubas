@@ -1,3 +1,7 @@
+:root {
+  color-scheme: light;
+}
+
 html {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   box-sizing: border-box;
@@ -16,6 +20,10 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 
 /* Cabeçalho */
@@ -59,6 +67,94 @@ nav a {
 
 nav a:hover {
   background-color: rgb(102, 133, 158);
+}
+
+.welcome {
+  color: aliceblue;
+  text-align: center;
+  margin: 8px;
+}
+
+.label_tools {
+  /*fundo do botão do tema*/
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px 2.5rem;
+  background: rgba(15, 25, 34, 0.88);
+}
+
+.label_tools button,
+.c3-interest-form button {
+  /*botões de interresse e do tema caloro/escuro*/
+  cursor: pointer;
+  background: #287b62;
+  color: white;
+}
+
+.c3-interest-panel,
+.c3-message {
+  /*Formulário no fim da pagina*/
+  background: #0f1922;
+  color: aliceblue;
+  border-radius: 12px;
+  padding: 18px;
+  margin: 18px 0;
+}
+
+/*--formulário do index-*/
+.c3-interest-panel h2 {
+  color: #55d6a5;
+}
+
+.c3-interest-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.c3-interest-form input {
+  flex: 1 1 180px;
+}
+
+.c3-interest-list {
+  line-height: 1.8;
+}
+
+.c3-interest-list button {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.c3-message {
+  display: none;
+  margin-top: 15px;
+}
+
+.c3-message.visivel {
+  display: block;
+}
+
+.c3-message.sucesso {
+  border-left: 4px solid #35b779;
+}
+
+.c3-message.erro {
+  border-left: 4px solid #e05a5a;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0); /* recortar a área visível*/
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ---------------------------------------------------------------- */
@@ -201,6 +297,16 @@ article {
 article p {
   text-align: justify !important;
   margin-bottom: 15px;
+}
+
+.label_tools button,
+.label_tools input,
+.c3-interest-form input,
+.c3-interest-form button {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 13px;
+  font: inherit;
 }
 
 /* -------------------------------- Curriculo pagina 2 abaixo-------------------------------- */
@@ -651,7 +757,6 @@ text {
   background-color: #f9f9f9;
 }
 
-
 /* Rodapé */
 footer {
   background-color: rgb(23, 49, 66);
@@ -661,7 +766,7 @@ footer {
   margin-top: auto;
 }
 
-/* REGRAS BÁSICAS DE RESPONSIVIDADE PARA CELULAR */
+/* RESPONSIVIDADE PARA CELULAR */
 
 @media (max-width: 984px) {
   main {
@@ -754,7 +859,7 @@ footer {
     }
   }
 
-  /* Ajustes Finos para Smartphones Pequenos */
+  /* Ajustes para Smartphones Pequenos */
   @media (max-width: 480px) {
     header h1 {
       width: 100%;
@@ -766,3 +871,4 @@ footer {
     }
   }
 }
+

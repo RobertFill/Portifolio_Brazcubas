@@ -22,6 +22,12 @@
           <a href="grafico.html">Gráfico</a>
         </nav>
       </header>
+      <div class="label_tools">
+        <button type="button" id="alternar-tema" aria-pressed="false">
+          <!--botão para mudar a cor do tema com false(desativado)-->
+          tema
+        </button>
+      </div>
 
       <div class="mini_container_home">
         <main>
@@ -44,6 +50,7 @@
               <p>Principais tecnologias estudadas:</p>
 
               <table>
+                <!--tabela de nivel escolar-->
                 <thead>
                   <tr>
                     <th>Tecnologia</th>
@@ -74,9 +81,14 @@
         </main>
 
         <aside>
-          <!--Conteúdo da esquerda-->
+          <!--Conteúdo da direita-->
           <div class="aside_content_home">
-            <h1>Olá, bem-vindo!</h1>
+            <h1 id="mensagem-boas-vindas">Olá, bem-vindo!</h1>
+            <div class="welcome">
+              <label for="nome-visitante">Como você gostaria de ser chamado?</label>
+              <input id="nome-visitante" type="text" maxlength="40" placeholder="Digite seu nome"/>
+              <button type="button" id="salvar-nome">Salvar nome</button>
+            </div>
             <div class="my_box">
               <h2>Site Pessoal</h2>
               <h3>
@@ -114,12 +126,28 @@
                 </p>
               </article>
             </div>
+            <section
+              class="c3-interest-panel"
+              aria-labelledby="titulo-interesses"
+            >
+              <h2 id="titulo-interesses">Minha lista de interesses</h2>
+              <form class="c3-interest-form" id="form-interesses">
+                <label class="sr-only" for="novo-interesse">Novo interesse</label> <!--adiciona nova classe apos salvar anterior-->
+                <input id="novo-interesse" type="text" maxlength="80" placeholder="Ex.: JavaScript, jogos, música" required/>
+                <button type="submit">Adicionar</button>
+              </form>
+              <ul class="c3-interest-list" id="lista-interesses"></ul> <!--ira adicionar classes com javascript e deixar salva-->
+            </section>
           </div>
         </aside>
       </div>
     </div>
     <footer>
-      <p>&copy; Feito por Filipe Robert Soares <br> Estudante de ADS na BrazCubas</p>
+      <p>
+        &copy; Feito por Filipe Robert Soares <br />
+        Estudante de ADS na BrazCubas
+      </p>
     </footer>
+    <script src="js/scripts.js" defer></script>
   </body>
 </html>
