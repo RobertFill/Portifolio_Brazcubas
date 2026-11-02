@@ -871,4 +871,26 @@ footer {
     }
   }
 }
+/* ativação de funções em javascript*/
 
+body.tema-escuro { /*após ativado muda o background*/
+  background-color: #17191d;
+  color: #f1f3f5;
+}
+
+/*após ativado muda o background*/
+body.tema-escuro header,
+body.tema-escuro footer,
+body.tema-escuro .box1,
+body.tema-escuro .aside_content_home,
+body.tema-escuro .curriculum_content section,
+body.tema-escuro .my_profile,
+body.tema-escuro form,
+body.tema-escuro .graphicContent {
+  background-color: #202328;
+}
+body.tema-escuro .my_box,
+body.tema-escuro #tecnology,
+body.tema-escuro .container_grafic {
+  background-color: #111317;
+}
