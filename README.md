@@ -3,6 +3,7 @@
 ## Feito na faculdade brazcubas
 - HTML
 - CSS
+- JavaScript
 
   ## Projeto em andamento
 

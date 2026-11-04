@@ -21,9 +21,10 @@
           <a href="grafico.html">Gráfico</a>
         </nav>
       </header>
+      <div class="c3-tools"><button type="button" id="alternar-tema" aria-pressed="false">Alternar tema claro/escuro</button></div>
 
       <main class="form_box">
-        <form action="#">
+        <form id="form-contato" novalidate>
           <fieldset>
             <legend>Informações de Contato</legend>
             <h1>Formulário de Contato</h1>
@@ -108,6 +109,7 @@
               <button type="submit">Enviar</button>
               <button type="reset">Limpar</button>
             </div>
+            <div id="feedback-formulario" class="c3-message" role="status" aria-live="polite"></div>
           </fieldset>
         </form>
       </main>
@@ -116,5 +118,6 @@
         <p>&copy; Feito por Filipe Robert Soares <br> Estudante de ADS na BrazCubas</p>
       </footer>
     </div>
+    <script src="js/scripts.js" defer></script>
   </body>
 </html>
