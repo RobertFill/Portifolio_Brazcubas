@@ -72,7 +72,32 @@ nav a:hover {
 .welcome {
   color: aliceblue;
   text-align: center;
-  margin: 8px;
+  margin: 5px;
+}
+
+#nome-visitante{/*input de texto*/
+  padding:6px;
+  text-align: center;
+  border-radius: 8px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: none;
+}
+
+#salvar-nome{ /*botão do input texto*/
+  cursor: pointer;
+  background: #287b62;
+  color: white;
+
+  margin-bottom: 8px;
+  margin-top: 4px;
+
+  border: none;
+  border-radius: 5px;
+
+  padding: 10px;
+
+
 }
 
 .label_tools {

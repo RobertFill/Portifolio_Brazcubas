@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (temaSalvo === "escuro") document.body.classList.add("tema-escuro"); //adiciona uma classe
   atualizarBotaoTema();
 
-  if (botaoTema) {
+  if (botaoTema) {  //função de automatização de botão tema e tema escuro epara mater a mudança apos recarregar página
     botaoTema.addEventListener("click", () => {
       document.body.classList.toggle("tema-escuro"); // ação de click
       localStorage.setItem(
@@ -26,23 +26,31 @@ document.addEventListener("DOMContentLoaded", () => {
       atualizarBotaoTema();
     });
   }
+  //função de automatização de botão tema e tema escuro
   function atualizarBotaoTema() {
     if (!botaoTema) return;
     const escuro = document.body.classList.contains("tema-escuro");
-    botaoTema.textContent = escuro ? "tema escuro" : "tema claro"; // atribui uma string no html
-    botaoTema.setAttribute("aria-pressed", String(escuro)); // atribui o escuro a uma string
+    botaoTema.textContent = escuro ? "tema escuro" : "tema claro"; // atribui uma testo novo no html
+    botaoTema.setAttribute("aria-pressed", String(escuro)); // atribui o escuro ao texto
   }
 
   // Boas-vindas personalizadas.
   const campoNome = document.getElementById("nome-visitante");
   const botaoNome = document.getElementById("salvar-nome");
   const saudacao = document.getElementById("mensagem-boas-vindas");
-  function mostrarSaudacao() {
+
+  function mostrarSaudacao() {// função para exibir um nome digitado pelo usuario salvo mesmo apos atualizar
     const nome = localStorage.getItem(STORAGE.nome);
     if (saudacao && nome) saudacao.textContent = `Olá, ${nome}!`;
     if (campoNome && nome) campoNome.value = nome;
+
+      // Limpa o texto de dentro do input mantendo o elemento na tela
+      campoNome.value = "";
+
   }
+
   mostrarSaudacao();
+
   if (botaoNome && campoNome) {
     botaoNome.addEventListener("click", () => {
       const nome = campoNome.value.trim(); //elimina caracteres de espaço
@@ -53,7 +61,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       campoNome.setCustomValidity("");
       localStorage.setItem(STORAGE.nome, nome);
+
       mostrarSaudacao();
+
+
     });
     campoNome.addEventListener("input", () => campoNome.setCustomValidity(""));
     //limpa a mensagem de erro customizada do campo de texto no exato momento em que o usuário começa a digitar ou alterar o conteúdo.
@@ -64,7 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const campoInteresse = document.getElementById("novo-interesse");
   const listaInteresses = document.getElementById("lista-interesses");
   function obterInteresses() {
-    try {// definir um bloco de código que você deseja testar quanto a possíveis erros durante a execução
+    try {
+      // definir um bloco de código que você deseja testar quanto a possíveis erros durante a execução
       return JSON.parse(localStorage.getItem(STORAGE.interesses) || "[]");
       //recupera uma lista guardada no localStorage e a converte de volta para um Array/Objeto JavaScript
     } catch {
@@ -73,32 +85,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   function salvarInteresses(itens) {
-    localStorage.setItem(STORAGE.interesses, JSON.stringify(itens));//converte valores ou objetos do JavaScript em uma String no formato JSON
+    localStorage.setItem(STORAGE.interesses, JSON.stringify(itens)); //converte valores ou objetos do JavaScript em uma String no formato JSON
   }
   function renderizarInteresses() {
     if (!listaInteresses) return;
     listaInteresses.replaceChildren();
-    obterInteresses().forEach((interesse, indice) => {//usada para percorrer sobre os elementos de um Array
-      const li = document.createElement("li");//cria uma lista no html
-      const texto = document.createElement("span");////cria uma span no html
+    obterInteresses().forEach((interesse, indice) => {
+      //usada para percorrer sobre os elementos de um Array
+      const li = document.createElement("li"); //cria uma lista no html
+      const texto = document.createElement("span"); ////cria uma span no html
       texto.textContent = interesse;
-      const remover = document.createElement("button");//cria um botão de remover
+      const remover = document.createElement("button"); //cria um botão de remover
       remover.type = "button";
       remover.textContent = "Remover";
-      remover.addEventListener("click", () => {// evento de clique no botão criado
+      remover.addEventListener("click", () => {
+        // evento de clique no botão criado
         const itens = obterInteresses();
-        itens.splice(indice, 1);//removendo
+        itens.splice(indice, 1); //removendo
         salvarInteresses(itens);
         renderizarInteresses();
       });
-      li.append(texto, remover);//insere novos elementos ou conteúdos no final de um elemento
-      listaInteresses.appendChild(li);// insere elemento no final
+      li.append(texto, remover); //insere novos elementos ou conteúdos no final de um elemento
+      listaInteresses.appendChild(li); // insere elemento no final
     });
   }
   renderizarInteresses();
   if (formInteresses && campoInteresse) {
     formInteresses.addEventListener("submit", (event) => {
-      event.preventDefault();//evita recarregamentos de página ao enviar formulários
+      event.preventDefault(); //evita recarregamentos de página ao enviar formulários
       const valor = campoInteresse.value.trim();
       if (!valor) return;
       const itens = obterInteresses();
