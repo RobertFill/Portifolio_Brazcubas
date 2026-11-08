@@ -21,7 +21,12 @@
           <a href="grafico.html">Gráfico</a>
         </nav>
       </header>
-      <div class="c3-tools"><button type="button" id="alternar-tema" aria-pressed="false">Alternar tema claro/escuro</button></div>
+      <div class="label_tools">
+        <button type="button" id="alternar-tema" aria-pressed="false">
+          <!--botão para mudar a cor do tema com false(desativado)-->
+          tema
+        </button>
+      </div>
 
       <main class="form_box">
         <form id="form-contato" novalidate>
@@ -109,13 +114,21 @@
               <button type="submit">Enviar</button>
               <button type="reset">Limpar</button>
             </div>
-            <div id="feedback-formulario" class="c3-message" role="status" aria-live="polite"></div>
+            <div
+              id="feedback-formulario"
+              class="c3-message"
+              role="status"
+              aria-live="polite"
+            ></div>
           </fieldset>
         </form>
       </main>
 
       <footer>
-        <p>&copy; Feito por Filipe Robert Soares <br> Estudante de ADS na BrazCubas</p>
+        <p>
+          &copy; Feito por Filipe Robert Soares <br />
+          Estudante de ADS na BrazCubas
+        </p>
       </footer>
     </div>
     <script src="js/scripts.js" defer></script>
