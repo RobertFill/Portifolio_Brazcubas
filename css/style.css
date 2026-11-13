@@ -14,6 +14,7 @@ html {
 }
 
 body {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   display: flex;
   flex-direction: column;
   background-color: rgb(147, 147, 165);
@@ -38,6 +39,9 @@ header {
 
 header h1 {
   width: 160px;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: normal;
   text-align: center;
   color: rgb(102, 133, 158);
   background-color: aliceblue;
@@ -75,8 +79,9 @@ nav a:hover {
   margin: 5px;
 }
 
-#nome-visitante{/*input de texto*/
-  padding:6px;
+#nome-visitante {
+  /*input de texto*/
+  padding: 6px;
   text-align: center;
   border-radius: 8px;
   margin-top: 10px;
@@ -84,7 +89,8 @@ nav a:hover {
   border: none;
 }
 
-#salvar-nome{ /*botão do input texto*/
+#salvar-nome {
+  /*botão do input texto*/
   cursor: pointer;
   background: #287b62;
   color: white;
@@ -96,8 +102,6 @@ nav a:hover {
   border-radius: 5px;
 
   padding: 10px;
-
-
 }
 
 .label_tools {
@@ -113,7 +117,7 @@ nav a:hover {
 
 .label_tools button,
 .c3-interest-form button {
-  /*botões de interresse e do tema caloro/escuro*/
+  /*botões de interesse e do tema claro/escuro*/
   cursor: pointer;
   background: #287b62;
   color: white;
@@ -129,6 +133,7 @@ nav a:hover {
 
 /*--formulário do index-*/
 .c3-interest-panel h2 {
+  text-align: center;
   color: #55d6a5;
 }
 
@@ -144,13 +149,13 @@ nav a:hover {
 
 .c3-interest-list {
   line-height: 1.8;
+  font-size: 1.3rem;
 }
 
 .c3-interest-list button {
   margin-left: 8px;
   cursor: pointer;
 }
-
 
 .sr-only {
   position: absolute;
@@ -316,7 +321,6 @@ article p {
   margin-bottom: 15px;
 }
 
-
 /* -------------------------------- Curriculo pagina 2 abaixo-------------------------------- */
 
 .about_my_curriculo {
@@ -480,6 +484,13 @@ fieldset {
   padding: 30px;
 }
 
+legend {
+  float: none;
+  width: auto;
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
 input {
   width: 100%;
 }
@@ -495,6 +506,11 @@ textarea {
   gap: 15px;
 }
 
+.genre .form_group {
+  flex-direction: row;
+  align-items: center;
+}
+
 .genre input {
   width: auto;
   cursor: pointer;
@@ -507,6 +523,8 @@ textarea {
 }
 
 form h1 {
+  font-size: 2rem;
+  font-weight: bold;
   text-align: center;
   margin-top: 0;
   margin-bottom: 25px;
@@ -575,6 +593,7 @@ form h1 {
 
 .form_buttons button[type="reset"] {
   background-color: rgb(105, 114, 124);
+  color: aliceblue;
 }
 
 .form_buttons button[type="reset"]:hover {
@@ -583,7 +602,8 @@ form h1 {
 
 /* Multimidia abaixo - USANDO DISPLAY GRID */
 
-.container {
+.container,
+.page-wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -879,9 +899,11 @@ footer {
     }
   }
 }
+
 /* ativação de funções em javascript*/
 
-body.tema-escuro { /*após ativado muda o background*/
+body.tema-escuro {
+  /*após ativado muda o background*/
   background-color: #17191d;
   color: #f1f3f5;
 }
@@ -903,11 +925,11 @@ body.tema-escuro .container_grafic {
   background-color: #111317;
 }
 
-
-.c3-message {/*desativado a mensagem ativa no javascript*/
+.c3-message {
+  /*desativado a mensagem ativa no javascript*/
   display: none;
   margin-top: 15px;
-   /*Formulário no fim da pagina*/
+  /*Formulário no fim da pagina*/
   background: #0f1922;
   color: aliceblue;
   border-radius: 12px;
@@ -927,3 +949,20 @@ body.tema-escuro .container_grafic {
   border-left: 4px solid #e05a5a;
 }
 
+.c3-interest-panel ul li {
+  /* lista de interesses após ativado no javascript*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.c3-interest-panel ul li button{
+  /* botão após ativado no javascript*/
+  background: #be2f4e;
+  color: white;
+
+  border: none;
+
+  padding: 9px;
+  border-radius: 5px;
+}
