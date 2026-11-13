@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (temaSalvo === "escuro") document.body.classList.add("tema-escuro"); //adiciona uma classe
   atualizarBotaoTema();
 
-  if (botaoTema) {  //função de automatização de botão tema e tema escuro epara mater a mudança apos recarregar página
+  if (botaoTema) {
+    //função de automatização de botão tema e tema escuro para manter a mudança apos recarregar página
     botaoTema.addEventListener("click", () => {
       document.body.classList.toggle("tema-escuro"); // ação de click
       localStorage.setItem(
@@ -26,11 +27,12 @@ document.addEventListener("DOMContentLoaded", () => {
       atualizarBotaoTema();
     });
   }
+
   //função de automatização de botão tema e tema escuro
   function atualizarBotaoTema() {
     if (!botaoTema) return;
     const escuro = document.body.classList.contains("tema-escuro");
-    botaoTema.textContent = escuro ? "tema escuro" : "tema claro"; // atribui uma testo novo no html
+    botaoTema.textContent = escuro ? "tema escuro" : "tema claro"; // atribui um texto novo no html
     botaoTema.setAttribute("aria-pressed", String(escuro)); // atribui o escuro ao texto
   }
 
@@ -39,14 +41,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const botaoNome = document.getElementById("salvar-nome");
   const saudacao = document.getElementById("mensagem-boas-vindas");
 
-  function mostrarSaudacao() {// função para exibir um nome digitado pelo usuario salvo mesmo apos atualizar
+  function mostrarSaudacao() {
+    // função para exibir um nome digitado pelo usuario salvo mesmo apos atualizar
     const nome = localStorage.getItem(STORAGE.nome);
     if (saudacao && nome) saudacao.textContent = `Olá, ${nome}!`;
-    if (campoNome && nome) campoNome.value = nome;
-
-      // Limpa o texto de dentro do input mantendo o elemento na tela
-      campoNome.value = "";
-
+    if (campoNome) campoNome.value = "";
   }
 
   mostrarSaudacao();
@@ -63,8 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem(STORAGE.nome, nome);
 
       mostrarSaudacao();
-
-
     });
     campoNome.addEventListener("input", () => campoNome.setCustomValidity(""));
     //limpa a mensagem de erro customizada do campo de texto no exato momento em que o usuário começa a digitar ou alterar o conteúdo.
@@ -74,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const formInteresses = document.getElementById("form-interesses");
   const campoInteresse = document.getElementById("novo-interesse");
   const listaInteresses = document.getElementById("lista-interesses");
+
   function obterInteresses() {
     try {
       // definir um bloco de código que você deseja testar quanto a possíveis erros durante a execução
@@ -84,22 +82,24 @@ document.addEventListener("DOMContentLoaded", () => {
       return [];
     }
   }
+
   function salvarInteresses(itens) {
     localStorage.setItem(STORAGE.interesses, JSON.stringify(itens)); //converte valores ou objetos do JavaScript em uma String no formato JSON
   }
+
   function renderizarInteresses() {
     if (!listaInteresses) return;
     listaInteresses.replaceChildren();
     obterInteresses().forEach((interesse, indice) => {
       //usada para percorrer sobre os elementos de um Array
       const li = document.createElement("li"); //cria uma lista no html
-      const texto = document.createElement("span"); ////cria uma span no html
+      const texto = document.createElement("span"); //cria uma span no html
       texto.textContent = interesse;
       const remover = document.createElement("button"); //cria um botão de remover
       remover.type = "button";
-      remover.textContent = "Remover";
-      remover.addEventListener("click", () => {
-        // evento de clique no botão criado
+      remover.textContent = "X";
+      remover.addEventListener("click", () => { 
+        // evento de click em arrow
         const itens = obterInteresses();
         itens.splice(indice, 1); //removendo
         salvarInteresses(itens);
@@ -109,7 +109,9 @@ document.addEventListener("DOMContentLoaded", () => {
       listaInteresses.appendChild(li); // insere elemento no final
     });
   }
+
   renderizarInteresses();
+
   if (formInteresses && campoInteresse) {
     formInteresses.addEventListener("submit", (event) => {
       event.preventDefault(); //evita recarregamentos de página ao enviar formulários
@@ -128,13 +130,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // Formulário: validação com feedback na página e salvamento de rascunho.
   const formulario = document.getElementById("form-contato");
   const feedback = document.getElementById("feedback-formulario");
+
   if (formulario) {
     const campos = ["nome", "email", "telefone", "mensagem"];
+
     function exibirFeedback(mensagem, tipo) {
       if (!feedback) return;
       feedback.textContent = mensagem;
       feedback.className = `c3-message visivel ${tipo}`;
     }
+
     function salvarRascunho() {
       const dados = {};
       campos.forEach((id) => {
@@ -143,6 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       localStorage.setItem(STORAGE.rascunho, JSON.stringify(dados));
     }
+
     try {
       const rascunho = JSON.parse(
         localStorage.getItem(STORAGE.rascunho) || "{}",
@@ -155,10 +161,12 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch {
       localStorage.removeItem(STORAGE.rascunho);
     }
+
     campos.forEach((id) => {
       const campo = formulario.elements.namedItem(id);
       if (campo) campo.addEventListener("input", salvarRascunho);
     });
+
     formulario.addEventListener("submit", (event) => {
       event.preventDefault();
       if (!formulario.checkValidity()) {
@@ -176,6 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.removeItem(STORAGE.rascunho);
       formulario.reset();
     });
+
     formulario.addEventListener("reset", () => {
       setTimeout(() => {
         localStorage.removeItem(STORAGE.rascunho);

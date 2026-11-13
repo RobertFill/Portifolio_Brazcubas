@@ -3,12 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap 5.3 CSS:para utilizar o sistema de grid responsivo no formulário -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/style.css" />
     <title>Formulário | Filipe Robert Soares</title>
   </head>
 
   <body>
-    <div class="container">
+    <div class="page-wrapper">
       <header>
         <div>
           <h1>F/R/S.</h1>
@@ -68,16 +73,21 @@
             </div>
 
             <div class="form_group">
+              <!-- usado maxlength para limitar os digitos-->
               <label for="telefone">Contato:</label>
               <input
                 type="tel"
                 id="telefone"
                 name="telefone"
                 placeholder="(11)-9xxxx-xxxx"
-                pattern="\([0-9]{2}\)\s?[0-9]{5}-[0-9]{4}"
+                pattern="\([0-9]{2}\)\s?[0-9]{4,5}-[0-9]{4}"
+                maxlength="15"
+                title=" exemplo:(11) 98765-4321" 
                 required
               />
             </div>
+
+            <label>Gênero:</label>
             <div class="genre">
               <div class="form_group">
                 <label for="genero_m">Masculino:</label>
@@ -100,6 +110,33 @@
                 />
               </div>
             </div>
+
+            <!-- BOOTSTRAP
+                 1. "row": Usada nesta div container para ativar o sistema de grid flexbox do Bootstrap e agrupar Data e Horário do mesma linha.
+                 2. "g-3": Usada nesta mesma div para aplicar espaçamento uniforme (gutter) entre as colunas sem precisar criar margens extras no style.css.
+                 3. "col-md-6": Usada nas duas divs internas para dividir a linha em duas colunas iguais. -->
+            <div class="row g-3">
+              <div class="col-md-6 form_group">
+                <label for="data_contato">Data:</label>
+                <input
+                  type="date"
+                  id="data_contato"
+                  name="data_contato"
+                  required
+                />
+              </div>
+
+              <div class="col-md-6 form_group">
+                <label for="hora_contato">Horário:</label>
+                <input
+                  type="time"
+                  id="hora_contato"
+                  name="hora_contato"
+                  required
+                />
+              </div>
+            </div>
+
             <div class="form_group">
               <label for="mensagem">Mensagem:</label>
               <textarea
@@ -114,6 +151,7 @@
               <button type="submit">Enviar</button>
               <button type="reset">Limpar</button>
             </div>
+
             <div
               id="feedback-formulario"
               class="c3-message"
